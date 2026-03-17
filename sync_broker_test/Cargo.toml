@@ -1,0 +1,28 @@
+[package]
+name = "sync_broker_test"
+version = "0.1.0"
+authors = ["LibAFL Contributors"]
+edition = "2021"
+description = "Minimal fuzzer to test SyncFromBrokerStage and corpus_size reporting to the broker"
+
+[features]
+default = ["std"]
+std = []
+
+[profile.release]
+panic = "abort"
+lto = true
+codegen-units = 1
+opt-level = 3
+debug = true
+
+[dependencies]
+libafl = { path = "../../../crates/libafl", features = ["std", "derive"] }
+libafl_bolts = { path = "../../../crates/libafl_bolts" }
+clap = { version = "4", features = ["derive"] }
+env_logger = "0.11"
+log = { version = "0.4", features = ["release_max_level_info"] }
+
+[[bin]]
+name = "sync_broker_test"
+path = "src/main.rs"

@@ -1,0 +1,38 @@
+# sync_broker_test – build, run, and test SyncFromBrokerStage / corpus_size
+
+[linux]
+[macos]
+build:
+    cargo build --release
+
+[windows]
+build:
+    cargo build --release
+
+# Run broker + 1 client (Linux/macOS; needs fork)
+[linux]
+[macos]
+run:
+    ./target/release/sync_broker_test --cores 0,1
+
+[windows]
+run:
+    cargo run --release -- --cores 0
+
+# Short run and check that corpus is reported (non-zero)
+[linux]
+[macos]
+test:
+    #!/usr/bin/env bash
+    rm -f fuzz_stdout.log
+    timeout 25s ./target/release/sync_broker_test --cores 0,1 2>&1 | tee fuzz_stdout.log || true
+    if grep -qE "corpus: [1-9][0-9]*" fuzz_stdout.log; then
+        echo "OK: broker shows non-zero corpus for client (SyncFromBrokerStage corpus_size fix works)"
+    else
+        echo "FAIL: expected a line like 'corpus: 8' in output"
+        exit 1
+    fi
+
+[windows]
+test:
+    echo "Run 'just test' in WSL for the corpus check"

@@ -1,0 +1,62 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Build outputs
+build/
+bin/
+out/
+dist/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+
+# Fuzzing artifacts (LibFuzzer/AFL++ style)
+corpus/
+seed_corpus/
+artifacts/
+crashes/
+crashers/
+hangs/
+timeouts/
+queue/
+findings/
+results/
+workdir/
+*.profraw
+*.profdata
+*_coverage*
+coverage/
+lcov.info
+
+# Sanitizer / debug leftovers
+core
+core.*
+vgcore.*
+*.stackdump
+
+# Language/package caches (add what applies)
+node_modules/
+pip-wheel-metadata/
+__pycache__/
+*.pyc
+target/
