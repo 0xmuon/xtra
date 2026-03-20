@@ -5,10 +5,15 @@ Thumbs.db
 .vscode/
 .idea/
 
+
+v1.6.37.tar.gz
+
+
 # Build outputs
+libpng-*
 build/
 bin/
-out/
+fuzzer_stats.toml
 dist/
 cmake-build-*/
 CMakeFiles/
