@@ -1,3 +1,4 @@
+This is an fuzzer built via LibAFL, its just an example, if you are looking for using SyncFromBrokerStage specific stage.
 # sync_broker_test
 
 Minimal fuzzer to test **SyncFromBrokerStage** and that `corpus_size` is reported correctly to the broker (the fix in `crates/libafl/src/stages/sync.rs` that sends `state.corpus().count()` instead of `0`).
@@ -30,22 +31,13 @@ Binary: `target/release/sync_broker_test` (or `target/debug/sync_broker_test` fo
 ./target/release/sync_broker_test --cores 0
 ```
 
-**Broker + one client (needs fork; use WSL or Linux):**
+**Broker + one client (needs fork; Linux):**
 
 ```bash
 ./target/release/sync_broker_test --cores 0,1
 ```
 
 Watch the monitor output: you should see `corpus: 8` (or another non-zero number) for the client, confirming that the broker is receiving the real corpus size from SyncFromBrokerStage.
-
-## Optional: quick test
-
-From this directory you can run:
-
-```bash
-just test
-```
-
 This runs the fuzzer for a short time and checks that the output contains a non-zero corpus line (e.g. `corpus: 8`). Best run in WSL/Linux where the launcher can use fork and multiple cores.
 
 ## Notes
