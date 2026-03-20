@@ -1,3 +1,7 @@
+Taken as an reference I do not own this, refer https://github.com/AFLplusplus/LibAFL/tree/main/fuzzers/inprocess/libfuzzer_libpng_launcher
+The only change this fuzzer has is an addition of TrimTime calcualtion.
+If you are looking for output after running for 120 sec look in out directory.
+
 # Libfuzzer for libpng, with launcher
 
 This folder contains an example fuzzer for libpng, using LLMP for fast multi-process fuzzing and crash detection.
