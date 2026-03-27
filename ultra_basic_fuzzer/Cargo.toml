@@ -1,0 +1,26 @@
+[package]
+name = "rj_fuzzer"
+version = "0.1.0"
+edition = "2021"
+description = "LibAFL fuzzer for rj/1535b target"
+
+[features]
+default = ["std", "tui"]
+std = []
+tui = ["libafl/tui_monitor"]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+codegen-units = 1
+opt-level = 3
+debug = true
+
+[dependencies]
+env_logger = "0.11"
+libafl = { path = "../../crates/libafl" }
+libafl_bolts = { path = "../../crates/libafl_bolts" }
+log = { version = "0.4", features = ["release_max_level_info"] }
